@@ -1,6 +1,14 @@
 import React from "react";
 
-function Form({ submitTodo, title, setTitle, body, setBody }) {
+function Form({ title, setTitle, body, setBody, todos, setTodos }) {
+  const submitTodo = (e) => {
+    e.preventDefault();
+    const todoObj = { id: Date.now(), title, body, isDone: false };
+    setTodos([...todos, todoObj]);
+    setTitle("");
+    setBody("");
+  };
+
   return (
     <form onSubmit={submitTodo}>
       <label htmlFor="title">제목</label>

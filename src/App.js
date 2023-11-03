@@ -8,25 +8,6 @@ function App() {
   const [body, setBody] = useState("");
   const [todos, setTodos] = useState([]);
 
-  const submitTodo = (e) => {
-    e.preventDefault();
-    const todoObj = { id: todos.length, title, body, isDone: false };
-    setTodos([...todos, todoObj]);
-    setTitle("");
-    setBody("");
-  };
-  const isDoneTodo = (id) => {
-    todos.find((todo) => todo.id === id).isDone = true;
-    console.log(todos);
-    setTodos([...todos]);
-  };
-  const isNotDoneTodo = (id) => {
-    todos.find((todo) => todo.id === id).isDone = false;
-    setTodos([...todos]);
-  };
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
   return (
     <div className="App">
       <header className="App-header">
@@ -34,23 +15,19 @@ function App() {
         <span>React</span>
       </header>
       <Form
-        submitTodo={submitTodo}
         title={title}
         setTitle={setTitle}
         body={body}
         setBody={setBody}
+        todos={todos}
+        setTodos={setTodos}
       />
       <h2>Working..🔥</h2>
       <ul>
         {todos
           .filter((todo) => todo.isDone === false)
           .map((todo) => (
-            <Todo
-              key={todo.id}
-              todo={todo}
-              deleteTodo={deleteTodo}
-              isDoneTodo={isDoneTodo}
-            >
+            <Todo key={todo.id} todo={todo} todos={todos} setTodos={setTodos}>
               완료
             </Todo>
           ))}
@@ -60,12 +37,7 @@ function App() {
         {todos
           .filter((todo) => todo.isDone === true)
           .map((todo) => (
-            <Todo
-              key={todo.id}
-              todo={todo}
-              deleteTodo={deleteTodo}
-              isDoneTodo={isDoneTodo}
-            >
+            <Todo key={todo.id} todo={todo} todos={todos} setTodos={setTodos}>
               취소
             </Todo>
           ))}
