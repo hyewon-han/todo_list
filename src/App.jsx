@@ -3,6 +3,7 @@ import { useState } from "react";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
 import Header from "./components/Header";
+import TodoList from "./components/TodoList";
 
 function App() {
   const [title, setTitle] = useState("");
@@ -21,26 +22,18 @@ function App() {
           todos={todos}
           setTodos={setTodos}
         />
-        <h2>Working..🔥</h2>
-        <ul className="todo-list">
-          {todos
-            .filter((todo) => todo.isDone === false)
-            .map((todo) => (
-              <Todo key={todo.id} todo={todo} todos={todos} setTodos={setTodos}>
-                완료
-              </Todo>
-            ))}
-        </ul>
-        <h2>Done..! 🎉</h2>
-        <ul className="todo-list">
-          {todos
-            .filter((todo) => todo.isDone === true)
-            .map((todo) => (
-              <Todo key={todo.id} todo={todo} todos={todos} setTodos={setTodos}>
-                취소
-              </Todo>
-            ))}
-        </ul>
+        <TodoList
+          isDone={false}
+          state="Working..🔥"
+          todos={todos}
+          setTodos={setTodos}
+        />
+        <TodoList
+          isDone={true}
+          state="Done..! 🎉"
+          todos={todos}
+          setTodos={setTodos}
+        />
       </div>
       <footer>Hyewon's To do List &copy; All right reserved</footer>
     </div>

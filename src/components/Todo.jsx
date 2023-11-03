@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/Todo.css";
 
-function Todo({ todo, todos, setTodos, children }) {
+function Todo({ todo, todos, setTodos }) {
   const isDoneTodo = (id) => {
     todos.find((todo) => todo.id === id).isDone = true;
     setTodos([...todos]);
@@ -27,7 +27,7 @@ function Todo({ todo, todos, setTodos, children }) {
               : () => isNotDoneTodo(todo.id)
           }
         >
-          {children}
+          {todo.isDone ? "취소" : "완료"}
         </button>
       </div>
     </li>
