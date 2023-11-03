@@ -2,5 +2,6 @@
 
 ## 컴포넌트 분리
 
+- Header.jsx
 - Form.jsx
 - Todo.jsx

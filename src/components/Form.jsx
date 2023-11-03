@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/Form.css";
 
 function Form({ title, setTitle, body, setBody, todos, setTodos }) {
   const submitTodo = (e) => {
@@ -10,7 +11,7 @@ function Form({ title, setTitle, body, setBody, todos, setTodos }) {
   };
 
   return (
-    <form onSubmit={submitTodo}>
+    <form onSubmit={submitTodo} className="form">
       <label htmlFor="title">제목</label>
       <input
         value={title}
@@ -18,6 +19,8 @@ function Form({ title, setTitle, body, setBody, todos, setTodos }) {
         id="title"
         type="text"
         placeholder="Write your to do title"
+        required
+        maxLength={20}
       />
       <label htmlFor="body">내용</label>
       <input
@@ -26,6 +29,8 @@ function Form({ title, setTitle, body, setBody, todos, setTodos }) {
         id="body"
         type="text"
         placeholder="Write your to do body"
+        required
+        maxLength={20}
       />
       <button>추가하기</button>
     </form>
