@@ -2,14 +2,17 @@ import React from "react";
 import "../css/Todo.css";
 
 function Todo({ todo, todos, setTodos }) {
-  const isDoneTodo = (id) => {
-    todos.find((todo) => todo.id === id).isDone = true;
-    setTodos([...todos]);
-  };
-  const isNotDoneTodo = (id) => {
-    todos.find((todo) => todo.id === id).isDone = false;
-    setTodos([...todos]);
-  };
+  function toggleTodo(id) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.isDone = !todo.isDone;
+        }
+        return todo;
+      })
+    );
+  }
+
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
@@ -20,13 +23,7 @@ function Todo({ todo, todos, setTodos }) {
       <p>{todo.body}</p>
       <div className="todo-btns">
         <button onClick={() => deleteTodo(todo.id)}>삭제하기</button>
-        <button
-          onClick={
-            todo.isDone === false
-              ? () => isDoneTodo(todo.id)
-              : () => isNotDoneTodo(todo.id)
-          }
-        >
+        <button onClick={() => toggleTodo(todo.id)}>
           {todo.isDone ? "취소" : "완료"}
         </button>
       </div>
