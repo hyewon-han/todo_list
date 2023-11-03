@@ -3,6 +3,7 @@ import "../css/Todo.css";
 
 function Todo({ todo, todos, setTodos }) {
   function toggleTodo(id) {
+    // todo.isDone => true <-> false
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
