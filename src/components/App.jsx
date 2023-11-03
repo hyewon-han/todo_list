@@ -1,9 +1,8 @@
-import "./css/App.css";
+import "../css/App.css";
 import { useState } from "react";
-import Form from "./components/Form";
-import Todo from "./components/Todo";
-import Header from "./components/Header";
-import TodoList from "./components/TodoList";
+import Form from "./Form";
+import Header from "./Header";
+import TodoList from "./TodoList";
 
 function App() {
   const [title, setTitle] = useState("");
