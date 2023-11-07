@@ -5,22 +5,13 @@ import Header from "./Header";
 import TodoList from "./TodoList";
 
 function App() {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
   const [todos, setTodos] = useState([]);
 
   return (
     <div className="App">
       <div className="wrap">
         <Header />
-        <Form
-          title={title}
-          setTitle={setTitle}
-          body={body}
-          setBody={setBody}
-          todos={todos}
-          setTodos={setTodos}
-        />
+        <Form todos={todos} setTodos={setTodos} />
         <TodoList
           isDone={false}
           state="Working..🔥"
