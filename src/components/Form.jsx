@@ -1,7 +1,10 @@
-import React from "react";
+import { useState } from "react";
 import "../css/Form.css";
 
-function Form({ title, setTitle, body, setBody, todos, setTodos }) {
+function Form({ todos, setTodos }) {
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+
   const submitTodo = (e) => {
     e.preventDefault();
     const todoObj = { id: Date.now(), title, body, isDone: false };
