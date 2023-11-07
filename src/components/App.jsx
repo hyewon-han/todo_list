@@ -12,18 +12,8 @@ function App() {
       <div className="wrap">
         <Header />
         <Form todos={todos} setTodos={setTodos} />
-        <TodoList
-          isDone={false}
-          state="Working..🔥"
-          todos={todos}
-          setTodos={setTodos}
-        />
-        <TodoList
-          isDone={true}
-          state="Done..! 🎉"
-          todos={todos}
-          setTodos={setTodos}
-        />
+        <TodoList isDone={false} todos={todos} setTodos={setTodos} />
+        <TodoList isDone={true} todos={todos} setTodos={setTodos} />
       </div>
       <footer>Hyewon's To do List &copy; All right reserved</footer>
     </div>
